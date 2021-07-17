@@ -1,13 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 
-function MoodReaction() {
+function MoodReaction(props) {
+  const name = props.name;
+
   function respondToHappy() {
-    alert('Awesome!');
+    alert(`Awesome! ${name}`);
   }
 
   function respondToBlue() {
-    alert("It's okay!");
+    alert(`It's okay! ${name}`);
   }
 
   return (
@@ -24,13 +26,14 @@ function MoodReaction() {
 
 export function App() {
   const message = 'How are you?';
+  const name = 'Apple';
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hi, {message}</p>
-        <MoodReaction />
+        <MoodReaction name={name} />
       </header>
     </div>
   );
