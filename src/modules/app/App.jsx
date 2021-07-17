@@ -2,21 +2,29 @@ import logo from './logo.svg';
 import './App.css';
 
 export function App() {
+  const message = 'How are you?';
+
+  function respondToHappy() {
+    alert('Awesome!');
+  }
+
+  function respondToBlue() {
+    alert('It\'s okay!');
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Hi, {message}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>
+          <button onClick={respondToHappy}>I am happy.</button>
+        </p>
+        <p>
+          <button onClick={respondToBlue}>I am blue.</button>
+        </p>
       </header>
     </div>
   );
