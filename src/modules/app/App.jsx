@@ -1,16 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
-function MoodReaction(props) {
+const MoodReaction = (props) => {
   const name = props.name;
 
+  const [response, setResponse] = useState('None');
+
   function respondToHappy() {
-    alert(`Awesome! ${name}`);
+    setResponse(`Awesome! ${name}`);
   }
 
   function respondToBlue() {
-    alert(`It's okay! ${name}`);
+    setResponse(`It's okay! ${name}`);
   }
+
+  console.log('RENDER');
 
   return (
     <div>
@@ -19,6 +24,9 @@ function MoodReaction(props) {
       </p>
       <p>
         <button onClick={respondToBlue}>I am blue.</button>
+      </p>
+      <p>
+        Response: {response}
       </p>
     </div>
   );
