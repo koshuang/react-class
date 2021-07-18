@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 const MoodReaction = (props) => {
   const name = props.name;
+  const component = props.component;
 
   const [response, setResponse] = useState('None');
 
@@ -28,7 +29,42 @@ const MoodReaction = (props) => {
       <p>
         Response: {response}
       </p>
+      <Card title={<FancyTitle title={name} />}>
+        {component}
+      </Card>
     </div>
+  );
+}
+
+function FancyTitle(props) {
+  const title = props.title;
+
+  return (
+    <div style={{color: 'red'}}>
+      {title}
+    </div>
+  );
+}
+
+function Hello() {
+  return (
+    <div>hello!</div>
+  );
+}
+
+function Card(props) {
+  const component = props.children;
+  const title = props.title;
+
+  return (
+    <>
+      <h1>
+        {title}
+      </h1>
+      <h2>
+        {component}
+      </h2>
+    </>
   );
 }
 
@@ -38,11 +74,19 @@ export function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hi, {message}</p>
-        <MoodReaction name={name} />
-      </header>
+      <AppHeader message={message} />
+      <MoodReaction name={name} component={<Hello />} />
     </div>
+  );
+}
+
+function AppHeader(props) {
+  const { message } = props;
+  
+  return (
+    <header className="App-header">
+      <img src={logo} className="App-logo" alt="logo" />
+      <p>Hi, {message}</p>
+    </header>
   );
 }
