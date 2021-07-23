@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
+import { ApiCall } from './ApiCall';
 
 const MoodReaction = (props) => {
   const name = props.name;
@@ -42,6 +43,7 @@ export function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hi, {message}</p>
         <MoodReaction name={name} />
+        <ApiCall />
       </header>
     </div>
   );
