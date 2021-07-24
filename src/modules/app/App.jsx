@@ -1,36 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
-
-const MoodReaction = (props) => {
-  const name = props.name;
-
-  const [response, setResponse] = useState('None');
-
-  function respondToHappy() {
-    setResponse(`Awesome! ${name}`);
-  }
-
-  function respondToBlue() {
-    setResponse(`It's okay! ${name}`);
-  }
-
-  console.log('RENDER');
-
-  return (
-    <div>
-      <p>
-        <button onClick={respondToHappy}>I am happy.</button>
-      </p>
-      <p>
-        <button onClick={respondToBlue}>I am blue.</button>
-      </p>
-      <p>
-        Response: {response}
-      </p>
-    </div>
-  );
-}
+import { MoodReaction } from '../mood/components/MoodReaction';
 
 export function App() {
   const message = 'How are you?';
