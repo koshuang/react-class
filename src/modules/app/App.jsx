@@ -1,4 +1,4 @@
-import { MoodReaction } from '../mood';
+import { Food, MoodReaction } from '../mood';
 import './App.css';
 import logo from './logo.svg';
 
@@ -12,6 +12,7 @@ export function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hi, {message}</p>
         <MoodReaction name={userName} />
+        <Food />
       </header>
     </div>
   );
