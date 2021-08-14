@@ -1,4 +1,5 @@
 import Checkbox from '@material-ui/core/Checkbox';
+import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -10,6 +11,8 @@ export const TodoList = () => {
   const [allTodoItems, setTodoItems] = useState([]);
   const [pageTodoItems, setPageTodoItems] = useState([]);
   const [page, setPage] = useState(1);
+  const [checked, setChecked] = React.useState([0]);
+
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/todos')
       .then(response => response.json())
@@ -22,19 +25,35 @@ export const TodoList = () => {
     const end = 10 * page;
     setPageTodoItems(allTodoItems.slice(start, end));
   }, [allTodoItems, page]);
-  const handleToggle = value => {};
+  const handleToggle = todoItem => () => {
+    const currentIndex = checked.indexOf(todoItem);
+    const newChecked = [...checked];
+
+    if (currentIndex === -1) {
+      newChecked.push(todoItem);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setChecked(newChecked);
+  };
   const onPageChange = (event, page) => {
     setPage(page);
   };
 
   return (
-    <>
+    <Grid container justifyContent="center" direction="column" alignItems="center" spacing={3}>
       <List>
         {pageTodoItems.map((todoItem, index) => {
           return (
-            <ListItem key={index} role={undefined} dense button onClick={handleToggle()}>
+            <ListItem key={index} role={undefined} dense button onClick={handleToggle(todoItem)}>
               <ListItemIcon>
-                <Checkbox edge="start" checked={false} tabIndex={-1} disableRipple />
+                <Checkbox
+                  edge="start"
+                  checked={checked.indexOf(todoItem) !== -1}
+                  tabIndex={-1}
+                  disableRipple
+                />
               </ListItemIcon>
               <ListItemText primary={todoItem.title} />
             </ListItem>
@@ -42,6 +61,6 @@ export const TodoList = () => {
         })}
       </List>
       <Pagination count={20} onChange={onPageChange} />
-    </>
+    </Grid>
   );
 };
