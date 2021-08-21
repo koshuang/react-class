@@ -19,7 +19,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Home } from '../home';
-import { TicketList } from '../lodash-practice';
+import { Incidences, TicketList } from '../lodash-practice';
 import { TodoList } from '../todo-list';
 import { mainListItems } from './listItems';
 
@@ -183,6 +183,9 @@ export function App() {
                 </Route>
                 <Route path="/ticket-list">
                   <TicketList />
+                </Route>
+                <Route path="/incidences">
+                  <Incidences />
                 </Route>
                 <Route path="/">
                   <Home />
