@@ -20,5 +20,11 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Todos" />
     </ListItem>
+    <ListItem button component={RouterLink} to="/ticket-list">
+      <ListItemIcon>
+        <ShoppingCartIcon />
+      </ListItemIcon>
+      <ListItemText primary="TicketList" />
+    </ListItem>
   </div>
 );
